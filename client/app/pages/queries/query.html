@@ -21,19 +21,20 @@
     <div class="row p-l-15 p-b-10 m-l-0 m-r-0 page-header--new page-header--query">
       <div class="col-sm-8 col-xs-7 p-0">
         <h3>
-          <edit-in-place editable="canEdit" done="saveName" ignore-blanks="true" value="query.name"></edit-in-place>
+          <edit-in-place class="edit-in-place" editable="canEdit" on-done="saveName" ignore-blanks="true" value="query.name"></edit-in-place>
           <span class="label label-default" ng-if="query.is_draft && !query.is_archived">Unpublished</span>
           <span class="label label-warning" ng-if="query.is_archived" uib-popover="This query is archived and can't be used in dashboards, and won't appear in search results." popover-placement="right" popover-trigger="'mouseenter'">Archived</span>
         </h3>
 
         <em>
-          <edit-in-place editable="canEdit"
-            done="saveDescription"
-            editor="textarea"
-            placeholder="No description"
-            ignore-blanks='false'
-            value="query.description"
-            markdown="true">
+          <edit-in-place
+            class="edit-in-place"
+            editable="canEdit"
+            on-done="saveDescription"
+            editor="'textarea'"
+            placeholder-text="'No description'"
+            ignore-blanks="false"
+            value="query.description">
           </edit-in-place>
         </em>
       </div>
