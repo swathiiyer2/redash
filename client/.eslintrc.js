@@ -29,6 +29,7 @@ module.exports = {
     "react/prefer-stateless-function": "warn",
     "react/forbid-prop-types": "warn",
     "react/prop-types": "warn",
+    "jsx-a11y/anchor-is-valid": "off",
     "max-len": ['error', 120, 2, {
       ignoreUrls: true,
       ignoreComments: false,
