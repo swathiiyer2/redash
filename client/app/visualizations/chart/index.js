@@ -5,6 +5,7 @@ import {
 import { react2angular } from 'react2angular';
 
 import ChartSeriesEditor from '@/react-components/ChartSeriesEditor';
+import ChartColorEditor from '@/react-components/ChartColorEditor';
 import template from './chart.html';
 import editorTemplate from './chart-editor.html';
 
@@ -93,6 +94,10 @@ function ChartEditor(ColorPalette, clientConfig) {
 
       scope.updateSeriesList = (s) => {
         scope.form.seriesList = s;
+      };
+
+      scope.updateColorsList = (c) => {
+        scope.$apply(() => { scope.form.colorsList = c; });
       };
 
       scope.updateSeriesOptions = (opts) => {
@@ -306,6 +311,7 @@ const ColorBox = {
 export default function init(ngModule) {
   ngModule.component('colorBox', ColorBox);
   ngModule.component('chartSeriesEditor', react2angular(ChartSeriesEditor, null, ['ColorPalette']));
+  ngModule.component('chartColorEditor', react2angular(ChartColorEditor, null, ['ColorPalette']));
   ngModule.directive('chartRenderer', ChartRenderer);
   ngModule.directive('chartEditor', ChartEditor);
   ngModule.config((VisualizationProvider) => {
