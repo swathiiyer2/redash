@@ -53,7 +53,7 @@ const EditVisualizationDialog = {
 
     this.has3plusColumnsFunction = () => {
       let has3plusColumns = false;
-      if ((JSON.stringify(this.visualization.options.columnMapping).match(/,/g) || []).length > 2) {
+      if (this.visualization.options.columnMapping && (JSON.stringify(this.visualization.options.columnMapping).match(/,/g) || []).length > 2) {
         has3plusColumns = true;
       }
       return has3plusColumns;
