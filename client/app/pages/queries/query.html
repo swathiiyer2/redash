@@ -127,57 +127,24 @@
       <div class="flex-fill p-relative">
         <div class="p-absolute d-flex flex-column p-l-15 p-r-15" style="left: 0; top: 0; right: 0; bottom: 0;">
           <div class="row editor" resizable r-directions="['bottom']" r-flex="true" resizable-toggle
-            style="min-height: 11px; max-height: 70vh;" ng-if="sourceMode">
-            <section>
-
-              <div class="container p-15 m-b-10" style="height:100%;">
-                <p style="height:calc(100% - 40px); margin-bottom: 0px;" class="editor__container">
-                  <query-editor query="query"
-                    schema="schema"
-                    syntax="dataSource.syntax"></query-editor>
-                  <label class="btn__format pull-right">
-                  <button type="button" class="btn btn-default btn-s pull-right" ng-click="formatQuery()" title="Format">
-                    <span class="zmdi zmdi-format-indent-increase"></span>
-                  </button>
-                  <span class="p-5 di-block">
-                    <input type="checkbox" ng-model="autocompleteQuery">
-                    <span class="fa fa-magic"></span> Autocomplete
-                  </span>
-                </label>
-                </p>
-
-                <div class="editor__control">
-                  <div class="row form-inline">
-                    <div class="col-xs-5 text-left">
-                      <select class="form-control datasource-small" ng-disabled="!isQueryOwner || !sourceMode" ng-model="query.data_source_id" ng-change="updateDataSource()"
-                        ng-options="ds.id as ds.name for ds in dataSources"></select>
-                      <a ng-if="dataSource.options.doc_url != ''" ng-href={{dataSource.options.doc_url}}>{{dataSource.type_name}} documentation</a>
-                      <span ng-if="dataSource.options.doc_url == ''">{{dataSource.type_name}}</span>
-                    </div>
-
-                    <div class="col-xs-7">
-                      <div class="editor__control--right">
-                        <button class="btn btn-default" ng-show="canEdit" ng-click="saveQuery()" title="Save">
-                          <span class="fa fa-floppy-o"></span>
-                          <span class="hidden-xs">Save</span>
-                          <span
-                            ng-show="isDirty">&#42;</span>
-                        </button>
-
-                        <button type="button" class="btn btn-primary" ng-disabled="queryExecuting || !canExecuteQuery()" ng-click="executeQuery()">
-                          <span class="zmdi zmdi-play"></span>
-                          <span class="hidden-xs">Execute</span>
-                        </button>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-            </section>
+               style="min-height: 11px; max-height: 70vh;" ng-if="sourceMode">
+            <query-editor
+              style="width: 100%; height: 100%;"
+              query-text="query.query"
+              autocomplete-query="autocompleteQuery"
+              schema="schema"
+              syntax="dataSource.syntax"
+              is-query-owner="isQueryOwner"
+              update-data-source="updateDataSource"
+              execute-query="executeQuery"
+              can-execute-query="canExecuteQuery"
+              listen-for-resize="listenForResize"
+              save-query="saveQuery"
+              update-query="updateQuery"
+              // LOL angular
+              data-data-source="dataSource"
+              data-data-sources="dataSources"></query-editor>
           </div>
-
           <div class="row query-metadata__mobile">
             <div class="col-xs-4 text-left">
               <span class="m-r-5">Created by</span>

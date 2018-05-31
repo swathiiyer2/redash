@@ -46,6 +46,10 @@ function QuerySourceCtrl(
 
   $scope.canForkQuery = () => currentUser.hasPermission('edit_query') && !$scope.dataSource.view_only;
 
+  $scope.updateQuery = (newQueryText) => {
+    $scope.query.query = newQueryText;
+  };
+
   // @override
   $scope.saveQuery = (options, data) => {
     const savePromise = saveQuery(options, data);
@@ -94,6 +98,10 @@ function QuerySourceCtrl(
         toastr.error("Error deleting visualization. Maybe it's used in a dashboard?");
       });
     });
+  };
+
+  $scope.listenForResize = (f) => {
+    $scope.$on('angular-resizable.resizing', f);
   };
 
   $scope.$watch('query.query', (newQueryText) => {
