@@ -186,7 +186,7 @@ export default class QueryEditor extends React.Component {
               <span className="p-5 di-block">
                 <input
                   type="checkbox"
-                  onClick={() => this.setState({ autocompleteQuery: !this.state.autocompleteQuery })}
+                  onChange={e => this.setState({ autocompleteQuery: e.target.checked })}
                   checked={this.state.autocompleteQuery}
                 />
                 <span className="fa fa-magic" /> Autocomplete

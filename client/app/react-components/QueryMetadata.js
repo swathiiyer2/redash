@@ -30,10 +30,11 @@ export default function QueryMetadata(props) {
           <span className="m-r-5">Created by</span>
           <img alt="" src={props.query.user.profile_image_url} className="profile__image_thumb" /> <strong>{timeAgo(props.query.created_at)}</strong>
         </div>
+        {props.query.isNew() ? '' :
         <div className="col-xs-4 text-center">
           <span className="m-r-5">Updated by</span>
           <img alt={props.query.user.name} src={props.query.last_modified_by.profile_image_url} className="profile__image_thumb" /><strong>{timeAgo(props.query.updated_at)}</strong>
-        </div>
+        </div> }
         <div className="col-xs-4 text-right">
           <span className="query-metadata__property">Refresh Schedule</span>
           {props.query.isNew() ?
