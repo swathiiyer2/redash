@@ -4,15 +4,8 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
 
-const chartTypes = {
-  line: { name: 'Line', icon: 'line-chart' },
-  column: { name: 'Bar', icon: 'bar-chart' },
-  area: { name: 'Area', icon: 'area-chart' },
-  pie: { name: 'Pie', icon: 'pie-chart' },
-  scatter: { name: 'Scatter', icon: 'circle-o' },
-  bubble: { name: 'Bubble', icon: 'circle-o' },
-  box: { name: 'Box', icon: 'square-o' },
-};
+import { ColorPalette } from '@/visualizations/chart/plotly/utils';
+import ChartTypePicker from './ChartTypePicker';
 
 export default class ChartSeriesEditor extends React.Component {
   static propTypes = {
@@ -20,6 +13,7 @@ export default class ChartSeriesEditor extends React.Component {
     seriesOptions: PropTypes.object.isRequired,
     updateSeriesList: PropTypes.func.isRequired,
     updateSeriesOptions: PropTypes.func.isRequired,
+    clientConfig: PropTypes.object.isRequired,
   }
 
   onSortEnd = ({ oldIndex, newIndex }) => {
@@ -45,13 +39,13 @@ export default class ChartSeriesEditor extends React.Component {
   changeColor = (value, color) => this.updateSeriesOptions(value, { color });
 
   render() {
-    const colors = Object.assign({ Automatic: null }, this.props.ColorPalette);
+    const colors = Object.assign({ Automatic: null }, ColorPalette);
     const colorSelectItem = opt => (<span style={{
       width: 12, height: 12, backgroundColor: opt.value, display: 'inline-block', marginRight: 5,
     }}
     />);
     const colorOptionItem = opt => <span style={{ textTransform: 'capitalize' }}>{colorSelectItem(opt)}{opt.label}</span>;
-    const typeItem = (opt, i) => <div><i className={'fa fa-' + opt.icon} /> {opt.label}</div>;
+
     const DragHandle = SortableHandle(({ value }) => <td style={{ cursor: 'move' }}><i className="fa fa-arrows-v" />{ this.props.seriesOptions[value].zIndex + 1 }</td>);
     const SortableItem = SortableElement(({ value }) => (
       <tr>
@@ -84,18 +78,10 @@ export default class ChartSeriesEditor extends React.Component {
           />
         </td>
         <td style={{ padding: 3, width: 105 }}>
-          <Select
+          <ChartTypePicker
             value={this.props.seriesOptions[value].type}
-            valueRenderer={typeItem}
-            clearable={false}
-            options={Object.keys(chartTypes).map(t => ({
-              value: t,
-              label: chartTypes[t].name,
-              icon: chartTypes[t].icon,
-            }))}
-            optionRenderer={typeItem}
             onChange={selected => this.changeType(value, selected.value)}
-            distance={4}
+            clientConfig={this.props.clientConfig}
           />
         </td>
       </tr>

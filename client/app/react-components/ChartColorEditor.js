@@ -4,6 +4,8 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'react-sortable-hoc';
 
+import { ColorPalette } from '@/visualizations/chart/plotly/utils';
+
 export default class ChartSeriesEditor extends React.Component {
   static propTypes = {
     colorsList: PropTypes.array.isRequired,
@@ -27,7 +29,7 @@ export default class ChartSeriesEditor extends React.Component {
   changeColor = (value, color) => this.updateSeriesOptions(value, { color });
 
   render() {
-    const colors = Object.assign({ Automatic: null }, this.props.ColorPalette);
+    const colors = Object.assign({ Automatic: null }, ColorPalette);
     const colorSelectItem = opt => (<span style={{
       width: 12, height: 12, backgroundColor: opt.value, display: 'inline-block', marginRight: 5,
     }}
