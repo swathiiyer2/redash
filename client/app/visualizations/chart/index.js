@@ -7,6 +7,7 @@ import { react2angular } from 'react2angular';
 
 import ChartEditor from '@/react-components/ChartEditor';
 import ChartRenderer from '@/react-components/ChartRenderer';
+import { visualizationRegistry } from '@/visualizations';
 import editorTemplate from './chart-editor.html';
 
 // eslint-disable-next-line no-unused-vars
@@ -224,11 +225,10 @@ export default function init(ngModule) {
   ngModule.component('colorBox', react2angular(ColorBox));
   ngModule.component('chartRenderer', react2angular(ChartRenderer));
   ngModule.component('chartEditor', react2angular(ChartEditor, null, ['clientConfig']));
-  ngModule.config((VisualizationProvider) => {
-    const renderTemplate = '<chart-renderer options="visualization.options" query-result="queryResult"></chart-renderer>';
-    const editTemplate = '<chart-editor visualization="visualization" update-visualization="updateVisualization" query-result="queryResult"></chart-editor>';
-
-    const defaultOptions = {
+  visualizationRegistry.CHART = {
+    renderer: ChartRenderer,
+    editor: ChartEditor,
+    defaultOptions: {
       globalSeriesType: 'column',
       sortX: true,
       legend: { enabled: true },
@@ -242,14 +242,7 @@ export default function init(ngModule) {
       defaultRows: 8,
       minColumns: 1,
       minRows: 5,
-    };
-
-    VisualizationProvider.registerVisualization({
-      type: 'CHART',
-      name: 'Chart',
-      renderTemplate,
-      editorTemplate: editTemplate,
-      defaultOptions,
-    });
-  });
+    },
+    name: 'Chart',
+  };
 }
