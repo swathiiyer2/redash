@@ -6,6 +6,7 @@ import QueryMetadata from '@/react-components/QueryMetadata';
 import template from './query.html';
 
 function QueryViewCtrl(
+  $rootScope,
   $scope,
   Events,
   $route,
@@ -79,6 +80,8 @@ function QueryViewCtrl(
   }
 
   $scope.refreshSchema = () => getSchema(true);
+
+  $scope.editorPaste = name => $rootScope.$broadcast('query-editor.paste', name);
 
   function updateDataSources(dataSources) {
     // Filter out data sources the user can't query (or used by current query):

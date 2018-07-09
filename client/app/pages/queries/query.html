@@ -89,7 +89,7 @@
       </div>
 
       <div class="editor__left__schema" ng-if="sourceMode">
-        <schema-browser class="schema-container" schema="schema" tabletogglestring="dataSource.options.toggle_table_string" on-refresh="refreshSchema()"></schema-browser>
+        <schema-browser class="schema-container" schema="schema" tabletogglestring="dataSource.options.toggle_table_string" on-refresh="refreshSchema" editor-paste="editorPaste"></schema-browser>
       </div>
       <div ng-if="!sourceMode" style="flex-grow: 1;">&nbsp;</div>
       <query-metadata mobile="false" query="query" save-query="saveQuery" can-edit="canEdit" can-schedule-query="canScheduleQuery" schedule="query.schedule"/>
