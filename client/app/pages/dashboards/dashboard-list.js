@@ -5,8 +5,6 @@ import template from './dashboard-list.html';
 import './dashboard-list.css';
 
 function DashboardListCtrl($scope, currentUser, $location, Dashboard) {
-  const TAGS_REGEX = /(^([\w\s/]|[^\u0000-\u007F])+):|(#([\w-]|[^\u0000-\u007F])+)/ig;
-
   const page = parseInt($location.search().page || 1, 10);
 
   // use $parent because we're using a component as route target instead of controller;

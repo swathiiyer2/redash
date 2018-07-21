@@ -1,7 +1,6 @@
 import moment from 'moment';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { react2angular } from 'react2angular';
 import { DatePicker } from 'antd';
 
 export default function DateTimeInput({
@@ -35,5 +34,3 @@ DateTimeInput.defaultProps = {
   withSeconds: false,
   onSelect: () => {},
 };
-
-

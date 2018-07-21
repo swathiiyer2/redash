@@ -267,7 +267,6 @@ function preparePieData(seriesList, options) {
     return {
       values: map(serie.data, i => i.y),
       labels: map(serie.data, (row, rowIdx) => {
-
         const rowX = hasX ? truncateCategoryAxis(normalizeValue(row.x), options) : `Slice ${index}`;
         const rowOpts = options.seriesOptions[rowX];
         if (rowOpts) {

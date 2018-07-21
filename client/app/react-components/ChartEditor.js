@@ -113,7 +113,8 @@ export default class ChartEditor extends React.Component {
     this.updateOptions({
       globalSeriesType: selected.value,
       showDataLabels: this.props.visualization.options.globalSeriesType === 'pie',
-      seriesOptions: { ...sOpts, type: selected.value } });
+      seriesOptions: { ...sOpts, type: selected.value },
+    });
   }
 
   toggleDataLabels = e => this.updateOptions({ showDataLabels: e.target.checked })

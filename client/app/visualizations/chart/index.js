@@ -1,5 +1,5 @@
 import {
-  some, extend, defaults, has, partial, intersection, without, includes, isUndefined,
+  has, partial, intersection, without, includes,
   sortBy, each, map, keys, difference,
 } from 'lodash';
 import React from 'react';
@@ -7,7 +7,7 @@ import { react2angular } from 'react2angular';
 
 import ChartEditor from '@/react-components/ChartEditor';
 import ChartRenderer from '@/react-components/ChartRenderer';
-import { visualizationRegistry } from '@/visualizations';
+import visualizationRegistry from '@/visualizations/registry';
 import editorTemplate from './chart-editor.html';
 
 // eslint-disable-next-line no-unused-vars
@@ -207,15 +207,15 @@ function OldChartEditor(clientConfig) {
         });
       }
 
-      scope.$watch('options', () => {
-        if (scope.options) {
-          // For existing visualization - set default options
-          defaults(scope.options, extend({}, DEFAULT_OPTIONS, {
-            showDataLabels: scope.options.globalSeriesType === 'pie',
-            dateTimeFormat: clientConfig.dateTimeFormat,
-          }));
-        }
-      });
+      // scope.$watch('options', () => {
+      //   if (scope.options) {
+      //     // For existing visualization - set default options
+      //     defaults(scope.options, extend({}, DEFAULT_OPTIONS, {
+      //       showDataLabels: scope.options.globalSeriesType === 'pie',
+      //       dateTimeFormat: clientConfig.dateTimeFormat,
+      //     }));
+      //   }
+      // });
 
       scope.templateHint = `
         <div class="p-b-5">Use special names to access additional properties:</div>
