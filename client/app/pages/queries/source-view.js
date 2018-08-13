@@ -72,7 +72,7 @@ function QuerySourceCtrl(
   $scope.autocompleteQuery = true;
   $scope.toggleAutocompleteQuery = () => {
     $scope.autocompleteQuery = !$scope.autocompleteQuery;
-   };
+  };
 
   $scope.listenForResize = (f) => {
     $scope.$on('angular-resizable.resizing', f);
