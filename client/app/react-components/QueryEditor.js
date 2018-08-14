@@ -74,6 +74,7 @@ export default class QueryEditor extends React.Component {
     updateQuery: PropTypes.func.isRequired,
     listenForResize: PropTypes.func.isRequired,
     queryExecuting: PropTypes.bool.isRequired,
+    refEditor: PropTypes.element.isRequired,
   }
 
   static defaultProps = {
@@ -85,7 +86,6 @@ export default class QueryEditor extends React.Component {
 
   constructor(props) {
     super(props);
-    this.refEditor = React.createRef();
     this.state = {
       schema: null, // eslint-disable-line react/no-unused-state
       keywords: [], // eslint-disable-line react/no-unused-state
@@ -102,14 +102,6 @@ export default class QueryEditor extends React.Component {
         callback(null, self.state.keywords);
       },
     });
-    this.onPaste = (text) => {
-      const editor = self.refEditor.editor;
-      editor.session.doc.replace(editor.selection.getRange(), text);
-      const range = editor.selection.getRange();
-      window.setTimeout(() => {
-        editor.selection.setRange(range);
-      }, 0);
-    };
 
     this.onLoad = (editor) => {
       // Release Cmd/Ctrl+L to the browser
@@ -161,7 +153,7 @@ export default class QueryEditor extends React.Component {
         <div className="container p-15 m-b-10" style={{ height: '100%' }}>
           <div style={{ height: 'calc(100% - 40px)', marginBottom: '0px' }} className="editor__container">
             <AceEditor
-              ref={this.refEditor}
+              ref={this.props.refEditor}
               theme="monokai"
               mode={this.props.syntax}
               value={this.state.queryText}
@@ -178,7 +170,6 @@ export default class QueryEditor extends React.Component {
               showPrintMargin={false}
               wrapEnabled={false}
               onLoad={this.onLoad}
-              onPaste={this.onPaste}
               onChange={(queryText) => { this.props.updateQuery(queryText); this.setState({ queryText }); }}
             />
             <label htmlFor="formatQuery" className="btn__format pull-right">
