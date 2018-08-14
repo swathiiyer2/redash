@@ -90,7 +90,6 @@ export default class QueryEditor extends React.Component {
       schema: null, // eslint-disable-line react/no-unused-state
       keywords: [], // eslint-disable-line react/no-unused-state
       autocompleteQuery: false,
-      queryText: this.props.queryText,
     };
     const self = this;
     langTools.addCompleter({
@@ -124,10 +123,8 @@ export default class QueryEditor extends React.Component {
     };
 
     this.formatQuery = () => {
-      this.props.formatQuery(this.props.dataSource.syntax, this.state.queryText)
-        .then((queryText) => { this.props.updateQuery(queryText); this.setState({ queryText }); })
-        .catch(error => this.props.toastr.error(error));
-    };
+      this.props.formatQuery(this.props.dataSource.syntax, this.props.queryText);
+    }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -156,7 +153,7 @@ export default class QueryEditor extends React.Component {
               ref={this.props.refEditor}
               theme="monokai"
               mode={this.props.syntax}
-              value={this.state.queryText}
+              value={this.props.queryText}
               editorProps={{ $blockScrolling: Infinity }}
               width="100%"
               height="100%"
@@ -170,7 +167,7 @@ export default class QueryEditor extends React.Component {
               showPrintMargin={false}
               wrapEnabled={false}
               onLoad={this.onLoad}
-              onChange={(queryText) => { this.props.updateQuery(queryText); this.setState({ queryText }); }}
+              onChange={this.props.updateQuery}
             />
             <label htmlFor="formatQuery" className="btn__format pull-right">
               <button type="button" id="formatQuery" className="btn btn-default btn-s pull-right" onClick={this.formatQuery} title="Format">
