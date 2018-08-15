@@ -6,7 +6,7 @@ import { Collapse } from 'react-bootstrap';
 import List from 'react-virtualized/dist/commonjs/List';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 
-export default class SchemaBrowser extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     schema: PropTypes.instanceOf(PromiseState).isRequired,
     tableToggleString: PropTypes.string,

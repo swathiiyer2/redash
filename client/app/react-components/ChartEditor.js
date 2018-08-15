@@ -15,7 +15,7 @@ const DEFAULT_CUSTOM_CODE = `// Available variables are x, ys, element, and Plot
 // To plot your graph call Plotly.plot(element, ...)
 // Plotly examples and docs: https://plot.ly/javascript/`;
 
-export default class ChartEditor extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/no-unused-prop-types
     queryResult: PropTypes.object.isRequired,

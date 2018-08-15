@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-export default class ChartTypePicker extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     value: PropTypes.any.isRequired,
     onChange: PropTypes.func.isRequired,

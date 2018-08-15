@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Destination from './Destination';
 
-export default class DestinationOption extends React.Component {
+export default class extends React.Component {
   handleMouseDown = (event) => {
     event.preventDefault();
     event.stopPropagation();
@@ -29,7 +29,7 @@ export default class DestinationOption extends React.Component {
         tabIndex="-1"
         aria-selected={this.props.isSelected}
       >
-        <Destination destination={(console.log(this.props.option.destination), this.props.option.destination)} />
+        <Destination destination={this.props.option.destination} />
       </div>
     );
   }

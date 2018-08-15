@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class AlertDialog extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     title: PropTypes.string,
     message: PropTypes.string.isRequired,

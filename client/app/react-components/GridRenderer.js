@@ -117,7 +117,7 @@ function getColumnsToDisplay(columns, options, clientConfig) {
   return sortBy(filter(result, 'visible'), 'order');
 }
 
-export default class GridRenderer extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     itemsPerPage: PropTypes.number,
     options: PropTypes.object,

@@ -11,7 +11,7 @@ const statuses = {
 };
 
 
-export default class QueryExecutionStatus extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     queryId: PropTypes.number.isRequired,
     queryResult: PropTypes.instanceOf(PromiseState).isRequired,

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import visualizationRegistry from '@/visualizations/registry';
 
-export default class VisualizationOptionsEditor extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/no-unused-prop-types
     queryResult: PropTypes.object.isRequired,

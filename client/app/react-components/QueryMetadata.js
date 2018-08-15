@@ -9,7 +9,7 @@ function timeAgo(when) {
   return when ? moment(when).fromNow() : '-';
 }
 
-export default class QueryMetadata extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     mobile: PropTypes.bool.isRequired,
     query: PropTypes.object.isRequired,

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import visualizationRegistry from '@/visualizations/registry';
 import Filters from './Filters';
 
-export default class VisualizationRenderer extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     clientConfig: PropTypes.object.isRequired,
     visualization: PropTypes.object.isRequired,

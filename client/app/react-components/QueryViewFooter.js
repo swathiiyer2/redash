@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import { durationHumanize, prettySize } from '@/filters';
 
-export default class QueryViewFooter extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     query: PropTypes.object.isRequired,
     canEdit: PropTypes.bool.isRequired,

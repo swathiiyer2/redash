@@ -8,7 +8,7 @@ import FlexResizable from './FlexResizable';
 import QueryMetadata from './QueryMetadata';
 import SchemaBrowser from './SchemaBrowser';
 
-export default class QueryViewNav extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     canEdit: PropTypes.bool.isRequired,
     currentUser: PropTypes.object.isRequired,

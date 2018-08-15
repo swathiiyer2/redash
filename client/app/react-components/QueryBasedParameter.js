@@ -42,7 +42,7 @@ function optionsFromQueryResult(queryResult) {
   return options;
 }
 
-export default class QueryBasedParameter extends React.Component {
+export default class extends React.Component {
   propTypes = {
     param: PropTypes.object.isRequired,
     queryId: PropTypes.number.isRequired,

@@ -6,7 +6,7 @@ import { DropdownButton, MenuItem, OverlayTrigger, Popover } from 'react-bootstr
 import EditInPlaceText from './EditInPlaceText';
 import Overlay from './Overlay';
 
-export default class QueryViewHeader extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     canEdit: PropTypes.bool.isRequired,
     query: PropTypes.object.isRequired,

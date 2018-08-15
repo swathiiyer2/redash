@@ -7,7 +7,7 @@ function noDragStart() {
   return false;
 }
 
-export default class FlexResizable extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     children: PropTypes.arrayOf(PropTypes.element).isRequired,

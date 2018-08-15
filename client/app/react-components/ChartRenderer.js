@@ -27,7 +27,7 @@ const DEFAULT_OPTIONS = {
   minRows: 5,
 };
 
-export default class ChartRenderer extends React.PureComponent {
+export default class extends React.PureComponent {
   static DEFAULT_OPTIONS = DEFAULT_OPTIONS;
 
   static propTypes = {

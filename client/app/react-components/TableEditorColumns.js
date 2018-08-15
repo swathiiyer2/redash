@@ -5,7 +5,7 @@ import TableEditorColumnDetail from './TableEditorColumnDetail';
 
 const SortableItem = SortableElement(TableEditorColumnDetail);
 
-export default class TableEditorColumns extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     columns: PropTypes.array.isRequired,
     updateColumns: PropTypes.func.isRequired,

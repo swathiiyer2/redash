@@ -27,7 +27,7 @@ function scheduleInLocalTime(schedule) {
     .format('HH:mm');
 }
 
-export default class ScheduleDialog extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     show: PropTypes.bool.isRequired,
     query: PropTypes.object.isRequired,

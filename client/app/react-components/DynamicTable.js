@@ -208,7 +208,7 @@ function displayRows(preparedRows, currentPage, itemsPerPage) {
   return preparedRows.slice(first, last);
 }
 
-export default class DynamicTable extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/no-unused-prop-types
     rows: PropTypes.array.isRequired,

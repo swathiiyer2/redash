@@ -119,7 +119,7 @@ function collectTableColumns(queryResult, clientConfig, newCols) {
   );
 }
 
-export default class GridEditor extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     visualization: PropTypes.object.isRequired,
     queryResult: PropTypes.object.isRequired,

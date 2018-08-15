@@ -25,7 +25,7 @@ RdTab.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default class QueryViewVisualizations extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     clientConfig: PropTypes.object.isRequired,
     query: PropTypes.object.isRequired,

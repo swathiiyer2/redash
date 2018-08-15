@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const unloadMessage = 'You will lose your changes if you leave';
 const confirmMessage = `${unloadMessage}\n\nAre you sure you want to leave this page?`;
 
-export default class AlertUnsavedChanges extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     isDirty: PropTypes.bool.isRequired,
     onChangeLocation: PropTypes.func.isRequired,

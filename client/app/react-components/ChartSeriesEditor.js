@@ -7,7 +7,7 @@ import { SortableContainer, SortableElement, SortableHandle, arrayMove } from 'r
 import { ColorPalette } from '@/visualizations/chart/plotly/utils';
 import ChartTypePicker from './ChartTypePicker';
 
-export default class ChartSeriesEditor extends React.Component {
+export default class extends React.Component {
   static propTypes = {
     seriesList: PropTypes.array.isRequired,
     seriesOptions: PropTypes.object.isRequired,
