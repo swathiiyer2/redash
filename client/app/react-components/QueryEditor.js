@@ -187,9 +187,9 @@ export default class QueryEditor extends React.Component {
           <div className="editor__control">
             <div className="row form-inline">
               <div className="col-xs-5 text-left">
-                {this.props.isQueryOwner ? <select className="form-control datasource-small" ng-model="query.data_source_id" onChange={this.props.updateDataSource}>{this.props.dataSources.map(ds => <option label={ds.name} value={ds.id} key={`ds-option-${ds.id}`}>{ds.name}</option>)}</select> : ''}
-                {hasDoc ? <a href={this.props.dataSource.options.doc_url}>{this.props.dataSource.type_name} documentation</a> : ''}
-                {hasDoc ? this.props.dataSource.type_name : ''}
+                {this.props.isQueryOwner ? <select className="form-control datasource-small" ng-model="query.data_source_id" onChange={this.props.updateDataSource}>{this.props.dataSources.map(ds => <option label={ds.name} value={ds.id} key={`ds-option-${ds.id}`}>{ds.name}</option>)}</select> : null}
+                {hasDoc ? <a href={this.props.dataSource.options.doc_url}>{this.props.dataSource.type_name} documentation</a> : null}
+                {hasDoc ? this.props.dataSource.type_name : null}
               </div>
 
               <div className="col-xs-7">
@@ -197,7 +197,7 @@ export default class QueryEditor extends React.Component {
                   <button className="btn btn-default" ng-show="canEdit" onClick={this.props.saveQuery} title="Save">
                     <span className="fa fa-floppy-o" />
                     <span className="hidden-xs">Save</span>
-                    {this.state.isDirty ? '&#42;' : ''}
+                    {this.state.isDirty ? '&#42;' : null}
                   </button>
 
                   <button type="button" className="btn btn-primary" disabled={this.props.queryExecuting || !this.props.canExecuteQuery} onClick={this.props.executeQuery}>
